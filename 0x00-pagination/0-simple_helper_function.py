@@ -3,8 +3,7 @@
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int)\
-        -> Tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """[summary]
 
     Args:
