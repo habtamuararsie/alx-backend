@@ -3,13 +3,22 @@
 import csv
 import math
 from typing import List
+from typing import Tuple
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+   return a tuple of size two containing a start index and an end index
+   Page numbers are 1-indexed, i.e. the first page is page 1.
+   """
+    return ((page - 1) * page_size, page * page_size)
 
 
 class Server:
 
     """Server class to paginate a database of popular baby names.
     """
-    DATA_FILE = "Popular_Baby_Names.csv"
+    DATA = "Popular_Baby_Names.csv"
 
     def __init__(self):
         self.__dataset = None
@@ -18,7 +27,7 @@ class Server:
         """Cached dataset
         """
         if self.__dataset is None:
-            with open(self.DATA_FILE) as f:
+            with open(self.DATA) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
@@ -37,11 +46,3 @@ def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     res = self.__dataset[index[0]:index[1]] if index[0] < len(
         self.__dataset) and index[1] < len(self.__dataset) else []
     return res
-
-
-def index_range(self, page: int, page_size: int) -> tuple:
-    """
-   return a tuple of size two containing a start index and an end index
-   Page numbers are 1-indexed, i.e. the first page is page 1.
-   """
-    return ((page - 1) * page_size, page * page_size)
