@@ -23,7 +23,7 @@ class LFUCache(BaseCaching):
         assign a key to value to cache if limit not reached
         otherwise delete most  used item and update used key
         """
-        if key is None or item is None:
+        if key and item:
             self.cache_data[key] = item
             self.cache_data.move_to_end(key)
             if len(self.cache_data) > self.MAX_ITEMS:
