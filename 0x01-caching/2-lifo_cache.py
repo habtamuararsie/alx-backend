@@ -9,7 +9,7 @@ class LIFOCache(BaseCaching):
     """
     LIFOCache
     """
-    
+
     def __init__(self):        
         """
         Initialize  the cache
@@ -17,7 +17,6 @@ class LIFOCache(BaseCaching):
         """
         super().__init__()
         self.keys = []
-
     def put(self, key, item):
         """
         assign a key to value to cache if limit not reached
