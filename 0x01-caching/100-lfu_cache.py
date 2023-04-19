@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-MRUCache   System model
+LFUCache   System model
 """
 from base_caching import BaseCaching
+from collections import OrderedDict
 
 
-class MRUCache(BaseCaching):
+class LFUCache(BaseCaching):
     """
-    MRUCache
+    LFUCache
     """
 
     def __init__(self):
@@ -15,7 +16,7 @@ class MRUCache(BaseCaching):
         Initialize Cache
         """
         super().__init__()
-        self.used_key = []
+        self.cache_data = OrderedDict()
 
     def put(self, key, item):
         """
@@ -23,21 +24,18 @@ class MRUCache(BaseCaching):
         otherwise delete most  used item and update used key
         """
         if key and item:
-            if len(self.used_key) >= self.MAX_ITEMS:
-                if key not in self.used_key:
-                    print(f"DISCARD: {self.used_key[0]}")
-                    del self.cache_data[self.used_key[0]]
-                del self.used_key[0]
-            self.used_key = [key] + self.used_key
             self.cache_data[key] = item
+            self.cache_data.move_to_end(key)
+            if len(self.cache_data) > self.MAX_ITEMS:
+                a = self.cache_data.popitem(last=False)
+                print(f"DISCARD: {a[0]}")
 
     def get(self, key):
         """
             get item from cache if it exists other none
             update used key
         """
-        if key not in self.used_key:
+        if key not in self.cache_data.keys():
             return None
-        del self.used_key[self.used_key.index(key)]
-        self.used_key = [key] + self.used_key
+        self.cache_data.move_to_end(key)
         return self.cache_data[key]
