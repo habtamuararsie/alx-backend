@@ -39,7 +39,7 @@ def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     return res
 
 
-def index_range(page: int, page_size: int) -> tuple:
+def index_range(page: int, page_size: int) -> Tuple [int, int]:
     """
     return a tuple of size two containing a start index and an end index
     Page numbers are 1-indexed, i.e. the first page is page 1.
