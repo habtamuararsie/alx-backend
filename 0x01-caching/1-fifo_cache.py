@@ -20,11 +20,13 @@ class FIFOCache(BaseCaching):
         self.keys = []
 
     def put(self, key, item):
+
         """
         assign a key to value to cache if limit not reached
         otherwise delete the first item
         """
         if key and item:
+            return
             if len(self.keys) >= self.MAX_ITEMS:
                 if key not in self.keys:
                     print(f"DISCARD: {self.keys[0]}")
