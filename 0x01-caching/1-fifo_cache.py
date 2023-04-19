@@ -3,6 +3,7 @@
 FIFOCache System model
 """
 from base_caching import BaseCaching
+return
 
 
 class FIFOCache(BaseCaching):
