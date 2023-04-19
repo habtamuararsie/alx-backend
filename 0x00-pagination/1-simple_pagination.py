@@ -45,18 +45,16 @@ def index_range(page: int, page_size: int) -> tuple:
         return indexOfrange
 
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """[summary]
-        Args:
-            page (int, optional): [description]. Defaults to 1.
-            page_size (int, optional): [description]. Defaults to 10.
-        Returns:
-            List[List]: [description]
         """
-        assert all([type(page) is int, type(page_size) is int]) and\
-            page > 0 and page_size > 0
-        start, end = index_range(page, page_size)
-        dataset = self.dataset()
-        try:
-            return dataset[start:end]
-        except Exception:
-            return []
+        return items for the given page number range
+        Args:
+            page (int): the current page number
+            page_size (int): number of rows per page
+        Returns:
+            (List[List]): a list of row if page and page size > 0
+            ([]) : an empty list if page and page_size < 0
+        """
+        assert type(page) == int and type(page_size) == int
+        assert page > 0 and page_size > 0
+        FirstIndex, LastIndex = self.index_range(page, page_size)
+        return self.dataset()[FirstIndex:LastIndex]
