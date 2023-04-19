@@ -12,6 +12,7 @@ class LIFOCache(BaseCaching):
     """
 
     def __init__(self):
+        
         """
         Initialize  the cache
             keys: list of key in order
@@ -20,6 +21,7 @@ class LIFOCache(BaseCaching):
         self.keys = []
 
     def put(self, key, item):
+
         """
         assign a key to value to cache if limit not reached
         otherwise delete the last item
