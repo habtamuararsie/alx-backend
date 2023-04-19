@@ -7,6 +7,11 @@ from base_caching import BaseCaching
 class BasicCache(BaseCaching):
     """
     Basic Cache System  that have no limit
+     Args:
+        key: the dictionary key.
+        item: the data items
+    Returns:
+        result: return the value of data items.
     """
 
     def __init__(self):
