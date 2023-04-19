@@ -2,7 +2,8 @@
 """[summary]"""
 import csv
 import math
-from typing import List, Tuple
+from typing import List
+from typing import Tuple
 
 
 class Server:
@@ -39,9 +40,9 @@ def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
     return res
 
 
-def index_range(page: int, page_size: int) -> Tuple [int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    return a tuple of size two containing a start index and an end index
-    Page numbers are 1-indexed, i.e. the first page is page 1.
-    """
+   return a tuple of size two containing a start index and an end index
+   Page numbers are 1-indexed, i.e. the first page is page 1.
+   """
     return ((page - 1) * page_size, page * page_size)
