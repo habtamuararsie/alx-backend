@@ -6,14 +6,6 @@ from typing import List
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-   return a tuple of size two containing a start index and an end index
-   Page numbers are 1-indexed, i.e. the first page is page 1.
-   """
-    return ((page - 1) * page_size, page * page_size)
-
-
 class Server:
 
     """Server class to paginate a database of popular baby names.
@@ -33,6 +25,14 @@ class Server:
             self.__dataset = dataset[1:]
 
         return self.__dataset
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+   return a tuple of size two containing a start index and an end index
+   Page numbers are 1-indexed, i.e. the first page is page 1.
+   """
+    return ((page - 1) * page_size, page * page_size)
 
 
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
