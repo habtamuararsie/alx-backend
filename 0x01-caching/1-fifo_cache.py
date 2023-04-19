@@ -5,14 +5,12 @@ FIFOCache System model
 from base_caching import BaseCaching
 
 
-
 class FIFOCache(BaseCaching):
-
     """
     FIFOCache
     """
-       
-    def __init__(self) res:
+
+    def __init__(self):
         """
         Initialize  the cache
             keys: list of key in order
@@ -20,7 +18,13 @@ class FIFOCache(BaseCaching):
         super().__init__()
         self.keys = []
 
-    def put(self, key, item):
+
+        """
+        assign a key to value to cache if limit not reached
+        otherwise delete the first item
+        """
+
+def put(self, key, item):
         """
         assign a key to value to cache if limit not reached
         otherwise delete the first item
