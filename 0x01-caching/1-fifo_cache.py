@@ -3,7 +3,7 @@
 FIFOCache System model
 """
 from base_caching import BaseCaching
-return
+
 
 
 class FIFOCache(BaseCaching):
@@ -12,7 +12,7 @@ class FIFOCache(BaseCaching):
     FIFOCache
     """
        
-    def __init__(self):
+    def __init__(self) res:
         """
         Initialize  the cache
             keys: list of key in order
