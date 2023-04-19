@@ -18,13 +18,7 @@ class FIFOCache(BaseCaching):
         super().__init__()
         self.keys = []
 
-
-        """
-        assign a key to value to cache if limit not reached
-        otherwise delete the first item
-        """
-
-def put(self, key, item):
+    def put(self, key, item):
         """
         assign a key to value to cache if limit not reached
         otherwise delete the first item
