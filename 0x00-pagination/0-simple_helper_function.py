@@ -3,6 +3,7 @@
 
 
 def index_range(page: int, page_size: int) -> tuple:
+
     """
     Args:
         page (int): the current page
@@ -13,6 +14,7 @@ def index_range(page: int, page_size: int) -> tuple:
     Returns:
         (tuple): a row/tuple of the start and end index of the given page
     """
+    
     first_index = (page - 1) * page_size
     last_index = first_index + page_size
     indexOfrange = first_index, last_index
