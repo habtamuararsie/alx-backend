@@ -26,35 +26,29 @@ class Server:
         return self.__dataset
 
 
-@staticmethod
 def index_range(page: int, page_size: int) -> tuple:
-        """
-        Args:
-        page (int): the current page
-        page_size (int): the size of items in a page
-        first_index: calculate the first index
-        last_index: calculate the last index
-        indexOfrange: return first index and last index
-        Returns:
-        (tuple): a row/tuple of the start and end index of the given page
-        """
+    """
+    Return a tuple of size two containing a start index and an end
+    index corresponding to the range of indexes to return in a list
+    for those particular pagination parameters.
+    Returns:
+    (tuple): a row/tuple of the start and end index of the given page
+    """
 
-        first_index = (page - 1) * page_size
-        last_index = first_index + page_size
-        indexOfrange = first_index, last_index
-        return indexOfrange
+    first_index = (page - 1) * page_size
+    last_index = first_index + page_size
+    indexOfrange = first_index, last_index
+    return indexOfrange
+
 
 def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """
-        return items for the given page number range
-        Args:
-            page (int): the current page number
-            page_size (int): number of rows per page
-        Returns:
-            (List[List]): a list of row if page and page size > 0
-            ([]) : an empty list if page and page_size < 0
-        """
-        assert type(page) == int and type(page_size) == int
-        assert page > 0 and page_size > 0
-        FirstIndex, LastIndex = self.index_range(page, page_size)
-        return self.dataset()[FirstIndex:LastIndex]
+    """
+     return the appropriate page of the dataset
+    """
+    self.__dataset = self.dataset()
+    assert type(page) is int and type(page_size) is int
+    assert page > 0 and page_size > 0
+    index = self.index_range(page, page_size)
+    res = self.__dataset[index[0]:index[1]] if index[0] < len(
+        self.__dataset) and index[1] < len(self.__dataset) else []
+    return res
