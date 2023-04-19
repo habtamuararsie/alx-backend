@@ -17,9 +17,8 @@ class LIFOCache(BaseCaching):
         """
         super().__init__()
         self.keys = []
-
+        
     def put(self, key, item):
-
         """
         assign a key to value to cache if limit not reached
         otherwise delete the last item
