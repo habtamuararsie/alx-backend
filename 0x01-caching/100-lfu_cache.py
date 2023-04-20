@@ -35,7 +35,8 @@ class LFUCache(BaseCaching):
             get item from cache if it exists other none
             update used key
         """
-        if key is None or key not in self.cache_data.keys():
+        # if key is None or key not in self.cache_data.keys():
+        if key is not self.cache_data.keys():
             return None
         self.cache_data.move_to_end(key)
         return self.cache_data[key]
